@@ -1,15 +1,30 @@
-user_input = input("Escriu una paraula\n")
-
-word = str(user_input)
+user_input = input("Opcions\n 1.- Xifrar \n 2.- Desxifrar\n")
+option = int(user_input)
 
 def xifrar(x):
     letras = []
     xifrar_letras = []
     for letra in x:
-        letras.append(ord(letra) + 1)
-        xifrar_letras.append(chr(ord(letra) + 1))
+        letras.append(ord(letra)+1)
+        xifrar_letras.append(chr(ord(letra)+1))
     
-    print("Code points:", letras)
-    print("Encrypted letters:", ''.join(xifrar_letras))
+    print("Numeros ASCII:", letras)
+    print("Paraula encriptada:", ''.join(xifrar_letras))
 
-xifrar(word)
+
+def desxifrar(x):
+    letras = []
+    desxifrar_letras = []
+    for letra in x:
+        letras.append(ord(letra)-1)
+        desxifrar_letras.append(chr(ord(letra)-1))
+    
+    print("Numeros ASCII:", letras)
+    print("Paraula desencriptada:", ''.join(desxifrar_letras))
+
+user_input = input("Escriu una paraula\n")
+word = str(user_input)
+if option==1 :
+    xifrar(word)
+if option==2 :
+    desxifrar(word)
