@@ -1,4 +1,3 @@
-print (ord('z'))
 user_input = input("Opcions\n 1.- Xifrar \n 2.- Desxifrar\n")
 option = int(user_input)
 
