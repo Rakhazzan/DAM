@@ -1,46 +1,34 @@
-def codificar(ruta_original, ruta_cifrado):
-    # Abrimos el archivo original en modo lectura binaria y leemos su contenido
-    with open(ruta_original, "rb") as archivo:
-        contenido = archivo.read()
+def codificar(ruta_original, cod_path):
+    with open(ruta_original, "rb") as file:
+        content = file.read()
+    cod = bytearray((byte + 1) % 256 for byte in content)
+    with open(cod_path, "wb") as cod_file:
+        cod_file.write(cod)
 
-    # Codificamos sumando 1 a cada byte
-    contenido_codificado = bytearray((byte + 1) % 256 for byte in contenido)
-
-    # Guardamos el archivo codificado
-    with open(ruta_cifrado, "wb") as archivo_codificado:
-        archivo_codificado.write(contenido_codificado)
-
-    print(f"Archivo codificado guardado como: {ruta_cifrado}")
+    print(f"Arxiu codificat com: {cod_path}")
 
 
-def descodificar(ruta_codificada, ruta_descifrada):
-    # Abrimos el archivo codificado en modo lectura binaria y leemos su contenido
-    with open(ruta_codificada, "rb") as archivo:
-        contenido = archivo.read()
+def descodificar(cod_path, decod_path):
+    with open(cod_path, "rb") as file:
+        content = file.read()
+    decod = bytearray((byte - 1) % 256 for byte in content)
+    with open(decod_path, "wb") as decode_file:
+        decode_file.write(decod)
 
-    # Descodificamos restando 1 a cada byte
-    contenido_descodificado = bytearray((byte - 1) % 256 for byte in contenido)
-
-    # Guardamos el archivo descodificado
-    with open(ruta_descifrada, "wb") as archivo_descodificado:
-        archivo_descodificado.write(contenido_descodificado)
-
-    print(f"Archivo descodificado guardado como: {ruta_descifrada}")
+    print(f"Archivo descodificado guardado como: {decod_path}")
 
 
 def main():
-    # Rutas específicas proporcionadas
-    ruta_original = r"C:\Users\Mohamed\Documents\DAM\M09\mario.bmp"
-    ruta_cifrado = r"C:\Users\Mohamed\Documents\DAM\M09\COD_mario.bmp"
-    ruta_descifrado = r"C:\Users\Mohamed\Documents\DAM\M09\DEC_mario.bmp"
+    ori_path = r"C:\Users\Mohamed\Documents\DAM\M09\mario.bmp"
+    cod_path = r"C:\Users\Mohamed\Documents\DAM\M09\COD_mario.bmp"
+    decod_path = r"C:\Users\Mohamed\Documents\DAM\M09\DEC_mario.bmp"
 
-    # Pedir al usuario si quiere codificar o descodificar
-    opcion = int(input("Opciones:\n 1.- Codificar \n 2.- Descodificar\n"))
+    option = int(input("Opcio:\n 1.- Codificar \n 2.- Descodificar\n"))
 
-    if opcion == 1:
-        codificar(ruta_original, ruta_cifrado)
-    elif opcion == 2:
-        descodificar(ruta_cifrado, ruta_descifrado)
+    if option == 1:
+        codificar(ori_path, cod_path)
+    elif option == 2:
+        descodificar(cod_path, decod_path)
     else:
         print("¡Opción no válida!")
 
