@@ -63,3 +63,8 @@ li {
   border-color:rgb(0, 0, 0);
   border-radius: 5%; 
 }
+.caixa {
+  padding: 5%;
+  margin: 3%;
+  background-color: chocolate;
+}
