@@ -29,7 +29,6 @@ a {
   text-decoration: none; /* Això és el subratllat */
 }
 
-/* Quan passa el ratolí per sobre canvia el color dels links */
 a:hover {
   background-color: #888;
 }
@@ -41,7 +40,6 @@ a:hover {
 #top {
   color: white;
 }
-/* Estil per a dispositius mòbils (menú vertical) */
 ul {
   display: block;
 }
@@ -50,7 +48,6 @@ li {
   float: none;
 }
 
-/* Media query per a pantalles més grans (menú horitzontal) */
 @media (min-width: 768px) {
   ul {
       display: flex;
