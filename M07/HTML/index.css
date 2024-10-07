@@ -1,39 +1,62 @@
-/* posem un color de fons a la pàgina */
-/* quelcom que sembli una crema */
+/* Posem un color de fons a la pàgina */
+/* Quelcom que sembli una crema */
 body {
-    background-color: #f0e2c2;
+  background-color: #f0e2c2;
 }
-/*Format del menú-----------------------------------------------------*/
+
+/* Format del menú ----------------------------------------------------- */
 ul {
-    list-style-type: none; /* treiem el punt de la llista */
-    /* per a ubicar-ho a dalt de tot ens cal eliminar el marge i el padding */
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    /* color de fons del menú */
-    background-color: #000;
-  }
+  list-style-type: none; /* Treiem el punt de la llista */
+  /* Per a ubicar-ho a dalt de tot ens cal eliminar el marge i el padding */
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  /* Color de fons del menú */
+  background-color: #000;
+}
 
-
-/* alineació a l'esquerra */
+/* Alineació a l'esquerra */
 li {
-    float: left;
-  }
- 
+  float: left;
+}
+
 /* Definim l'aspecte dels links del menú */
-a{
-    display: block;  /* display block en parlarem més endavant */
-    color: white;  /* color de la lletra */
-    text-align: center;
-    padding: 14px 16px;    
-    text-decoration: none; /* això és el subratllat */
+a {
+  display: block; /* Display block en parlarem més endavant */
+  color: white;  /* Color de la lletra */
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none; /* Això és el subratllat */
+}
+
+/* Quan passa el ratolí per sobre canvia el color dels links */
+a:hover {
+  background-color: #888;
+}
+
+.classe1 {
+  text-align: center;
+}
+
+#top {
+  color: white;
+}
+/* Estil per a dispositius mòbils (menú vertical) */
+ul {
+  display: block;
+}
+
+li {
+  float: none;
+}
+
+/* Media query per a pantalles més grans (menú horitzontal) */
+@media (min-width: 768px) {
+  ul {
+      display: flex;
   }
 
-
-/* quan passa el ratolí per sobre canvia el color dels links */
- a:hover {
-    background-color: #888;
+  li {
+      float: left;
   }
-  .classe1 {  text-align: center;}
-  #top { color: white;}
-  
+}
