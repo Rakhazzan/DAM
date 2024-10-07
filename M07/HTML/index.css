@@ -1,0 +1,39 @@
+/* posem un color de fons a la pàgina */
+/* quelcom que sembli una crema */
+body {
+    background-color: #f0e2c2;
+}
+/*Format del menú-----------------------------------------------------*/
+ul {
+    list-style-type: none; /* treiem el punt de la llista */
+    /* per a ubicar-ho a dalt de tot ens cal eliminar el marge i el padding */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /* color de fons del menú */
+    background-color: #000;
+  }
+
+
+/* alineació a l'esquerra */
+li {
+    float: left;
+  }
+ 
+/* Definim l'aspecte dels links del menú */
+a{
+    display: block;  /* display block en parlarem més endavant */
+    color: white;  /* color de la lletra */
+    text-align: center;
+    padding: 14px 16px;    
+    text-decoration: none; /* això és el subratllat */
+  }
+
+
+/* quan passa el ratolí per sobre canvia el color dels links */
+ a:hover {
+    background-color: #888;
+  }
+  .classe1 {  text-align: center;}
+  #top { color: white;}
+  

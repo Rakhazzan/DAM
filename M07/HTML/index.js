@@ -1,0 +1,1 @@
+alert ("Benvingut a la pàgina de receptes") 
