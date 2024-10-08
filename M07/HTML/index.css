@@ -76,8 +76,8 @@ li {
 }
 @media (max-width: 768px) {
   .caixa {
-      flex: 1 1 calc(50% - 40px); 
-      max-width: calc(50% - 40px);
+      flex: 1 1 calc(75% - 40px); 
+      max-width: calc(75% - 40px);
   }
 }
 @media (max-width: 480px) {
