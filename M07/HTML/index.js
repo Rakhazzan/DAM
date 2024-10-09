@@ -1,1 +1,3 @@
-alert ("Benvingut a la pàgina de receptes") 
+function funcio1(){
+    alert ("Hem fet click sobre la imatge");
+}

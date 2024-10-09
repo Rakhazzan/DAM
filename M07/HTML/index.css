@@ -4,6 +4,9 @@ body {
   background-color: #f0e2c2;
 }
 
+h1 {
+  text-align: center;
+}
 /* Format del menú ----------------------------------------------------- */
 ul {
   list-style-type: none; /* Treiem el punt de la llista */
@@ -57,19 +60,42 @@ li {
       float: left;
   }
 }
-#receptes {
+#pais {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
   padding: 20px;
 }
+#videos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  margin-top: 60px; /* Puedes ajustar este valor */
+}
+
+
 .caixa {
   flex: 1 1 calc(25% - 40px); 
   box-sizing: border-box;
   max-width: calc(25% - 40px);
   text-align: center;
+  border: 2px solid rgb(24, 24, 24);
+  box-shadow: 5px 10px #888;
+
 }
+.caixaV {
+  flex: 1 1 calc(25% - 40px); 
+  box-sizing: border-box;
+  max-width: calc(505px);
+  text-align: center;
+  border: 2px solid rgb(24, 24, 24);
+  box-shadow: 5px 10px #888;
+
+}
+
 .caixa img {
   width: 100%;
   height: auto;
@@ -79,7 +105,12 @@ li {
       flex: 1 1 calc(75% - 40px); 
       max-width: calc(75% - 40px);
   }
+  .caixa {
+    width:20%;    
+  }
+
 }
+
 @media (max-width: 480px) {
   .caixa {
       flex: 1 1 100%; 
