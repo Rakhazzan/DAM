@@ -73,8 +73,9 @@ li {
   justify-content: center;
   gap: 20px;
   padding: 20px;
-  margin-top: 60px; /* Puedes ajustar este valor */
+
 }
+
 
 
 .caixa {
@@ -100,6 +101,11 @@ li {
   width: 100%;
   height: auto;
 }
+@media (min-width: 768px) {
+  #burger{
+    display:none;
+  }
+}
 @media (max-width: 768px) {
   .caixa {
       flex: 1 1 calc(75% - 40px); 
@@ -108,7 +114,9 @@ li {
   .caixa {
     width:20%;    
   }
-
+  #menu{
+    display:none;
+  }
 }
 
 @media (max-width: 480px) {

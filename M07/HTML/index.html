@@ -11,12 +11,17 @@
 </head>
 <body>
 <!-- Menú de 4 opciones -->
-<ul>
-    <li><a href="#home">Inici</a></li>
-    <li><a href="#pais">Destins</a></li>
-    <li><a href="#videos">Vídeos</a></li>
-    <li><a href="#altres">Altres</a></li>
-  </ul>
+<div id="burger">
+    <img  src="BurgerMenu.png"  onclick="funcioBurguer()" alt="Burguer" width="10%">
+  </div> 
+<div id="menu">
+    <ul>
+        <li onclick="funcioOption()"><a href="#home">Inici</a></li>
+        <li onclick="funcioOption()"><a href="#pais">Destins</a></li>
+        <li onclick="funcioOption()"><a href="#videos">Vídeos</a></li>
+        <li onclick="funcioOption()"><a href="#altres">Altres</a></li>
+      </ul>
+</div>
 
   <h1>Destinacions per viatjar</h1>
   <div id="pais">
@@ -36,7 +41,9 @@
         <img  src="pais4.jpg" onclick="funcio1()"  alt="Pastís" width="50%">
         <h4>Nagasaki</h4>
     </div>
-    <h1>Videos recomdendatoris</h1>
+</div>
+    <h1>Videos recomdendatoris</h1> 
+  
     <div id="videos">
         <div class="caixaV">
             <iframe width="500" src="https://www.youtube.com/embed/UoQMccKFlVA?si=lhyBer1BEz5-W957" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen ></iframe> 
