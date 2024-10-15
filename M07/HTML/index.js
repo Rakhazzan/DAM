@@ -16,3 +16,17 @@ function funcioOption() {
         menu.style.display = "none";
     }
 }
+function canviaContingut() {
+    var textIntroduit = document.getElementById("text1").value;
+    var elementAltres = document.getElementById("Altres");
+    elementAltres.textContent = textIntroduit;
+}
+
+function canviaAtribut() {
+    document.getElementById('Hawaii').src='img.jpg'
+}
+
+function canviaCSS() {
+    document.body.style.backgroundColor = "black";
+    document.body.style.color = "white";
+}

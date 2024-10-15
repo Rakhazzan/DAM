@@ -7,29 +7,27 @@ body {
 h1 {
   text-align: center;
 }
-/* Format del menú ----------------------------------------------------- */
 ul {
-  list-style-type: none; /* Treiem el punt de la llista */
-  /* Per a ubicar-ho a dalt de tot ens cal eliminar el marge i el padding */
+  list-style-type: none; 
   margin: 0;
   padding: 0;
   overflow: hidden;
-  /* Color de fons del menú */
+
   background-color: #000;
 }
 
-/* Alineació a l'esquerra */
+
 li {
   float: left;
 }
 
-/* Definim l'aspecte dels links del menú */
+
 a {
-  display: block; /* Display block en parlarem més endavant */
-  color: white;  /* Color de la lletra */
+  display: block; 
+  color: white;  
   text-align: center;
   padding: 14px 16px;
-  text-decoration: none; /* Això és el subratllat */
+  text-decoration: none; 
 }
 
 a:hover {
@@ -90,7 +88,7 @@ li {
 .caixaV {
   flex: 1 1 calc(25% - 40px); 
   box-sizing: border-box;
-  max-width: calc(505px);
+  max-width: calc(504px);
   text-align: center;
   border: 2px solid rgb(24, 24, 24);
   box-shadow: 5px 10px #888;
@@ -124,4 +122,28 @@ li {
       flex: 1 1 100%; 
       max-width: 100%;
   }
+}
+#contenBotons{
+  display:left;
+  margin-top:1%;
+}
+#contenBotons {
+  display: flex;
+  gap: 10px;
+  margin-top: 1%;
+}
+
+/* Format dels botons amb buttonoptimizer */
+.button {
+  background-color: #af4c4c;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
 }
