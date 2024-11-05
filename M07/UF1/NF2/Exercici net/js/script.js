@@ -1,81 +1,84 @@
-// Esperar a que el DOM esté completamente cargado antes de ejecutar el script
 document.addEventListener("DOMContentLoaded", function () {
     const newsForm = document.getElementById('news-form');
     const createNewsForm = document.getElementById('create-news-form');
-    const articlesSection = document.getElementById('articles-section'); // Sección de artículos principales
-    const asideSection = document.getElementById('aside-section'); // Sección de noticias secundarias (aside)
+    const articlesSection = document.getElementById('articles-section');
+    const asideSection = document.getElementById('aside-section');
+    const noNewsMessage = document.getElementById('no-news-message');
+    const noAsideNewsMessage = document.getElementById('no-aside-news-message');
+    const visitCounter = document.getElementById('counter-value');
+    let visitCount = localStorage.getItem("visitCount") || 0;
 
-    // Función para alternar la visibilidad del formulario
-    window.toggleForm = function () {
-        if (newsForm.style.display === 'none' || newsForm.style.display === '') {
-            newsForm.style.display = 'block';
-        } else {
-            newsForm.style.display = 'none';
-        }
-    };
+    visitCount++;
+    localStorage.setItem("visitCount", visitCount);
+    visitCounter.textContent = visitCount;
 
-    // Función para crear un nuevo artículo
-    function createArticle(title, content, section) {
-        // Crear un nuevo elemento de artículo
+    function toggleForm() {
+        newsForm.style.display = (newsForm.style.display === 'none' || newsForm.style.display === '') ? 'block' : 'none';
+    }
+    window.toggleForm = toggleForm;
+
+    function loadNews() {
+        const newsList = JSON.parse(localStorage.getItem("newsList")) || [];
+        newsList.forEach(news => createArticle(news.title, news.content, news.section, news.id, false));
+        updateEmptyMessages();
+    }
+
+    function createArticle(title, content, section, id = Date.now(), save = true) {
         const article = document.createElement('article');
-        
-        // Crear y agregar la imagen de eliminación
+        article.dataset.id = id;
+
         const deleteIcon = document.createElement('img');
-        deleteIcon.src = 'img/drop.png'; // Aquí es donde puedes colocar la URL de la imagen
+        deleteIcon.src = 'img/drop.png';
         deleteIcon.alt = 'Eliminar noticia';
         deleteIcon.classList.add('delete-icon');
         deleteIcon.style.cursor = 'pointer';
-        deleteIcon.style.width = '20px'; // Ajusta el tamaño según necesites
+        deleteIcon.style.width = '20px';
+        deleteIcon.addEventListener('click', () => deleteArticle(id, article, section));
+
         article.appendChild(deleteIcon);
 
-        // Crear y agregar el título
         const h2 = document.createElement('h2');
         h2.textContent = title;
         article.appendChild(h2);
 
-        // Crear y agregar el contenido
         const p = document.createElement('p');
         p.textContent = content;
         article.appendChild(p);
 
-        // Seleccionar la sección correcta (Principal o Secundari)
-        if (section === 'Secundari') {
-            asideSection.appendChild(article); // Agregar el artículo al aside
-        } else {
-            articlesSection.appendChild(article); // Agregar el artículo a la sección principal
-        }
+        const targetSection = (section === 'Secundari') ? asideSection : articlesSection;
+        targetSection.appendChild(article);
+        updateEmptyMessages();
 
-        // Agregar evento de clic para eliminar el artículo
-        deleteIcon.addEventListener('click', function() {
-            article.parentElement.removeChild(article);
-        });
+        if (save) {
+            const newsList = JSON.parse(localStorage.getItem("newsList")) || [];
+            newsList.push({ title, content, section, id, date: new Date().toISOString() });
+            localStorage.setItem("newsList", JSON.stringify(newsList));
+        }
     }
 
-    // Escuchar el evento submit del formulario
-    createNewsForm.addEventListener('submit', function (event) {
-        // Evitar que la página se recargue
-        event.preventDefault();
+    function updateEmptyMessages() {
+        noNewsMessage.style.display = articlesSection.childElementCount === 0 ? 'block' : 'none';
+        noAsideNewsMessage.style.display = asideSection.childElementCount === 0 ? 'block' : 'none';
+    }
 
-        // Obtener los valores del formulario
+    function deleteArticle(id, article, section) {
+        article.remove();
+        updateEmptyMessages();
+        const newsList = JSON.parse(localStorage.getItem("newsList")) || [];
+        const updatedNewsList = newsList.filter(news => news.id !== id);
+        localStorage.setItem("newsList", JSON.stringify(updatedNewsList));
+    }
+
+    createNewsForm.addEventListener('submit', function (event) {
+        event.preventDefault();
         const newsTitle = document.getElementById('news-title').value;
         const newsContent = document.getElementById('news-content').value;
         const newsSection = document.getElementById('news-section').value;
 
-        // Crear un nuevo artículo
         createArticle(newsTitle, newsContent, newsSection);
-
-        // Limpiar el formulario
         createNewsForm.reset();
-
-        // Ocultar el formulario después de crear la noticia
         newsForm.style.display = 'none';
     });
 
-    // Agregar eventos de clic a las imágenes de eliminación de los artículos preexistentes
-    document.querySelectorAll('.delete-icon').forEach(function(deleteIcon) {
-        deleteIcon.addEventListener('click', function() {
-            const article = deleteIcon.parentElement;
-            article.parentElement.removeChild(article);
-        });
-    });
+    loadNews();
 });

@@ -1,105 +1,71 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Exercici net Mohamed</title>
-
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-
-
-	<!-- Enllaç al teu CSS personalitzat -->
-	<script src="js/script.js"></script>
-	<link rel="stylesheet" href="css/style.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exercici net Mohamed</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/script.js" defer></script>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-	<div id="header-container" class="container-fluid py-3">
-		<div class="container d-flex flex-column align-items-start">
-			<h1 id="title" class="col-lg-9">h1#title</h1>
-			<nav class="mt-3 w-100">
-				<ul class="d-flex flex-column flex-sm-column flex-md-row justify-content-md-end w-100 me-md-5">
-					<li class="col-lg-9"></li>
-					<li class="w-100 w-md-auto" onclick="toggleForm()"><a href="#">nav ul li a</a></li>
-					<li class="w-100 w-md-auto" onclick="toggleForm()"><a href="#">nav ul li a</a></li>
-					<li class="w-100 w-md-auto" onclick="toggleForm()"><a href="#">nav ul li a</a></li>
-				</ul>
-			</nav>
-		</div>
-	</div>
+    <div id="header-container" class="container-fluid py-3">
+        <div class="container d-flex flex-column align-items-start">
+            <h1 id="title" class="col-lg-9">h1#title</h1>
+            <!-- Comptador de visites -->
+            <div id="visit-counter" class="col-lg-3 text-end">
+                Visites: <span id="counter-value"></span>
+            </div>
+            <nav class="mt-3 w-100">
+                <ul class="d-flex flex-column flex-sm-column flex-md-row justify-content-md-end w-100 me-md-5">
+                    <li class="w-100 w-md-auto" onclick="toggleForm()"><a href="#">Crear notícia</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 
-	<div id="news-form" class="container my-4" style="display: none;">
-		<h2>Crea una notícia</h2>
-		<form id="create-news-form">
-			<div class="mb-3">
-				<label for="news-title" class="form-label">Títol</label>
-				<input type="text" class="form-control" id="news-title" placeholder="Títol">
-			</div>
-			<div class="mb-3">
-				<label for="news-content" class="form-label">Escriu aquí la notícia</label>
-				<textarea class="form-control" id="news-content" rows="3"
-					placeholder="Escriu aquí la notícia"></textarea>
-			</div>
-			<div class="mb-3">
-				<label for="news-section" class="form-label">Secció</label>
-				<select class="form-select" id="news-section">
-					<option value="Principal">Principal</option>
-					<option value="Secundari">Secundari</option>
-				</select>
-			</div>
-			<button type="submit" class="btn btn-primary">Crea notícia</button>
-		</form>
-	</div>
-	<!-- Main content -->
-	<div id="main-container" class="container my-4">
-		<div class="row">
-			<!-- Articles Section -->
-			<!-- Articles Section -->
-			<section class="col-lg-8" id="articles-section">
-				<article>
-					<img class="delete-icon" src="img/drop.png" alt="Eliminar noticia"
-						style="cursor: pointer; width: 20px;">
-					<h2>section article 1</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas
-						tempor.</p>
-				</article>
-				<article>
-					<img class="delete-icon" src="img/drop.png" alt="Eliminar noticia"
-						style="cursor: pointer; width: 20px;">
-					<h2>section article 2</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas
-						tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero.</p>
-				</article>
-				<article>
-					<img class="delete-icon" src="img/drop.png" alt="Eliminar noticia"
-						style="cursor: pointer; width: 20px;">
-					<h2>section article 3</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas
-						tempor. Curabitur posuere enim eget turpis feugiat tempor.</p>
-				</article>
-			</section>
-			<!-- Aside Section -->
-			<aside class="col-lg-4" id="aside-section">
-				<article>
-					<h3>aside article 1</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas
-						tempor.</p>
-				</article>
-			</aside>
-		</div>
-	</div>
+    <div id="news-form" class="container my-4" style="display: none;">
+        <h2>Crea una notícia</h2>
+        <form id="create-news-form">
+            <div class="mb-3">
+                <label for="news-title" class="form-label">Títol</label>
+                <input type="text" class="form-control" id="news-title" placeholder="Títol">
+            </div>
+            <div class="mb-3">
+                <label for="news-content" class="form-label">Escriu aquí la notícia</label>
+                <textarea class="form-control" id="news-content" rows="3" placeholder="Escriu aquí la notícia"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="news-section" class="form-label">Secció</label>
+                <select class="form-select" id="news-section">
+                    <option value="Principal">Principal</option>
+                    <option value="Secundari">Secundari</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Crea notícia</button>
+        </form>
+    </div>
 
-	<!-- Footer -->
-	<div id="footer-container" class="container-fluid">
-		<footer class="container text-center">
-			<h3>footer</h3>
-		</footer>
-	</div>
+    <div id="main-container" class="container my-4">
+        <div class="row">
+            <section class="col-lg-8" id="articles-section">
+                <!-- Missatge "Sense notícies" -->
+                <p id="no-news-message">Sense notícies</p>
+            </section>
+            <aside class="col-lg-4" id="aside-section">
+                <p id="no-aside-news-message">Sense notícies</p>
+            </aside>
+        </div>
+    </div>
 
-	<!-- Bootstrap JS -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <div id="footer-container" class="container-fluid">
+        <footer class="container text-center">
+            <h3>footer</h3>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
