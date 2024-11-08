@@ -1,39 +1,46 @@
-<template>
-  <div class="date-time-container">
-    <p>{{ currentDate }}</p>
-    <p>{{ currentTime }}</p>
-  </div>
-</template>
+<script setup>
+import { ref } from 'vue'
 
-<script>
-export default {
-  data() {
-    return {
-      currentDate: '',
-      currentTime: '',
-    }
-  },
-  created() {
-    this.updateDateTime()
-    setInterval(this.updateDateTime, 1000)
-  },
-  methods: {
-    updateDateTime() {
-      const now = new Date()
-      this.currentDate = `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}`
-      this.currentTime = now.toLocaleTimeString()
-    },
-  },
+// Riddle text, hint, and solution variables
+const endevinalla =
+  'Una pedra que camina sense ser pedra; té quatre cames i no és ovella, pon ous i no és gallina'
+const pista = 'És un animal que comença per T'
+const solucio = 'LA TORTUGA'
+
+// Reactive variables to control hint and solution visibility
+const veurePista = ref(false)
+const veureSolucio = ref(false)
+
+// Functions to set visibility of hint and solution
+function funcioVeurePista() {
+  veurePista.value = true
+}
+
+function funcioVeureSolucio() {
+  veureSolucio.value = true
 }
 </script>
 
+<template>
+  <section>
+    <p>{{ endevinalla }}</p>
+    <p v-if="veurePista">{{ pista }}</p>
+    <p v-if="veureSolucio">{{ solucio }}</p>
+    <button @click="funcioVeurePista">Veure Pista</button>
+    <button @click="funcioVeureSolucio">Veure Solucio</button>
+  </section>
+</template>
+
 <style scoped>
-.date-time-container {
-  background-color: black;
-  color: white;
+section {
   text-align: center;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  font-size: 2rem;
+  margin-top: 20px;
+}
+
+button {
+  margin: 5px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  cursor: pointer;
 }
 </style>
