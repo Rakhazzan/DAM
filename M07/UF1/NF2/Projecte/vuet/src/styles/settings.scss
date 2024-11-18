@@ -1,10 +1,10 @@
 // Paleta de colores personalizada
-$brand: #FF0D00;
-$darkest: #FF9400;
-$dark: #FF0D00;
-$mid: #000000;
-$light: #292929;
-$lightest: #000000;
+$brand: #FF0D00; // Rojo brillante
+$darkest: #FF9400; // Naranja
+$dark: #FF0D00; // Rojo oscuro
+$mid: #000000; // Negro
+$light: #292929; // Gris oscuro
+$lightest: #000000; // Negro más claro (puede repetirse en varios lugares)
 
 // Estilos generales
 body {
@@ -66,4 +66,22 @@ body {
   background-color: $lightest;
   color: $light;
   padding: 20px;
+}
+
+// Estilos para las tarjetas o componentes con fondo azul
+.card {
+  background-color: $darkest; // Naranja en lugar de azul
+  color: $lightest; // Texto en blanco o negro claro
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $lightest;
+  }
+
+  .info {
+    color: $lightest;
+
+    .icon {
+      color: $lightest;
+    }
+  }
 }
