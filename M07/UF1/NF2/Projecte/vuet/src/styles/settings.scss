@@ -1,10 +1,69 @@
-/**
- * src/styles/settings.scss
- *
- * Configures SASS variables and Vuetify overwrites
- */
+// Paleta de colores personalizada
+$brand: #FF0D00;
+$darkest: #FF9400;
+$dark: #FF0D00;
+$mid: #000000;
+$light: #292929;
+$lightest: #000000;
 
-// https://vuetifyjs.com/features/sass-variables/`
-// @use 'vuetify/settings' with (
-//   $color-pack: false
-// );
+// Estilos generales
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: $lightest;
+  color: $light;
+}
+
+// Estilos para el <v-navigation-drawer>
+.v-navigation-drawer {
+  background-color: $mid;
+  color: $light;
+
+  .v-list-item {
+    &:hover {
+      background-color: $darkest;
+      color: $lightest;
+    }
+
+    .v-list-item-icon {
+      color: $darkest;
+    }
+
+    .v-list-item-title {
+      color: $light;
+    }
+  }
+}
+
+// Estilos para el <v-toolbar>
+.v-toolbar {
+  background-color: $brand;
+  color: $lightest;
+
+  .v-app-bar-nav-icon {
+    color: $lightest;
+  }
+
+  .v-toolbar-title {
+    font-weight: bold;
+    color: $lightest;
+  }
+
+  .v-btn {
+    color: $lightest;
+
+    &:hover {
+      background-color: $dark;
+    }
+
+    .v-icon {
+      color: $lightest;
+    }
+  }
+}
+
+// Estilos para el <v-main>
+.v-main {
+  background-color: $lightest;
+  color: $light;
+  padding: 20px;
+}
