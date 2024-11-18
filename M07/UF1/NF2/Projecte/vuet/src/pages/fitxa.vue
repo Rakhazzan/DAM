@@ -8,7 +8,6 @@
         <v-col cols="6">
           <h1 class="text-center">{{ company }}</h1>
           <h2>{{ nom }}</h2>
-          <p>{{ contingut }}</p>
           <v-icon>mdi-phone</v-icon>
           <p>{{ tel1 }}</p>
           <v-icon>mdi-map-marker</v-icon>
@@ -26,6 +25,5 @@ import { ref } from 'vue'
 
 const company = ref("HeavenTaste")
 const nom = ref("Fast Food")
-const contingut = ref("Cap superior")
 const tel1 = ref("97783707")
 </script>
