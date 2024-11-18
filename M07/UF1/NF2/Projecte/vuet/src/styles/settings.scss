@@ -1,7 +1,7 @@
 // Paleta de colores personalizada
 $brand: #FF0D00; // Rojo brillante
 $darkest: #FF9400; // Naranja
-$dark: #FF0D00; // Rojo oscuro
+$dark: #ffffff; // Rojo oscuro
 $mid: #000000; // Negro
 $light: #292929; // Gris oscuro
 $lightest: #000000; // Negro más claro (puede repetirse en varios lugares)
@@ -9,7 +9,7 @@ $lightest: #000000; // Negro más claro (puede repetirse en varios lugares)
 // Estilos generales
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: $lightest;
+  background-color: $dark;
   color: $light;
 }
 
@@ -63,8 +63,8 @@ body {
 
 // Estilos para el <v-main>
 .v-main {
-  background-color: $lightest;
-  color: $light;
+  background-color: $dark;
+  color: $dark;
   padding: 20px;
 }
 
@@ -85,3 +85,24 @@ body {
     }
   }
 }
+// Estilos personalizados para el navigation drawer
+.custom-drawer {
+    background-color: $mid; // Fondo negro
+    color: $light; // Texto gris claro
+  
+    .custom-list-item {
+      &:hover {
+        background-color: $brand; // Naranja al pasar el mouse
+        color: $lightest; // Texto blanco
+      }
+  
+      .custom-icon {
+        color: $darkest; // Ícono naranja
+      }
+  
+      .custom-title {
+        color: $dark; // Título gris claro
+      }
+    }
+  }
+  

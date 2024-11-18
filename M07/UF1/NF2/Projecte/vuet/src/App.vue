@@ -1,21 +1,15 @@
 <template>
   <v-app>
     <!-- Navigation Drawer -->
-    <v-navigation-drawer v-model="drawer" app>
+    <v-navigation-drawer v-model="drawer" app class="custom-drawer">
       <v-list>
-        <v-list-item
-          v-for="(item, index) in items"
-          :key="index"
-          link
-          :href="item.route"
-          @click="drawer = false"
-          class="d-flex align-center"
-        >
+        <v-list-item v-for="(item, index) in items" :key="index" link :href="item.route" @click="drawer = false"
+          class="d-flex align-center custom-list-item">
           <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
+            <v-icon class="custom-icon">{{ item.icon }}</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
+            <v-list-item-title class="custom-title">{{ item.title }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -23,7 +17,7 @@
 
 
     <!-- Toolbar -->
-    <v-toolbar color="blue" app>
+    <v-toolbar color="red" app>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>Navegador</v-toolbar-title>
       <v-spacer></v-spacer>
