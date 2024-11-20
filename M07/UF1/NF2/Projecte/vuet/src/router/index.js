@@ -11,6 +11,8 @@ import { routes } from 'vue-router/auto-routes'
 
 
 const router = createRouter({
+  path: "/login", component: () => import("@/pages/Login.vue") ,
+  path: "/checkout", component: () => import("@/pages/Checkout.vue") ,
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: setupLayouts(routes),
 })
