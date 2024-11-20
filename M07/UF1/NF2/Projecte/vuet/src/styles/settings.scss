@@ -5,7 +5,7 @@ $dark: #ffffff; // Rojo oscuro
 $mid: #000000; // Negro
 $light: #292929; // Gris oscuro
 $lightest: #000000; // Negro más claro (puede repetirse en varios lugares)
-
+$fondo: #edc184;
 // Estilos generales
 body {
   font-family: 'Roboto', sans-serif;
@@ -63,7 +63,7 @@ body {
 
 // Estilos para el <v-main>
 .v-main {
-  background-color: $dark;
+  background-color: $fondo;
   color: $dark;
   padding: 20px;
 }

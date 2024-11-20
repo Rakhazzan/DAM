@@ -17,22 +17,20 @@
 
 
     <!-- Toolbar -->
-    <v-toolbar color="red" app>
+    <v-toolbar color="#f06b64" app>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title> HeavenTaste</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
-      <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
+      <v-btn icon @click="goToCheckout">
+        <v-icon>mdi-cart</v-icon>
       </v-btn>
-      <v-btn icon>
+      <v-btn icon @click="navigateToLogin">
         <v-icon>mdi-login</v-icon>
       </v-btn>
     </v-toolbar>
-
-
     <!-- Main Content -->
     <v-main>
       <router-view />
@@ -44,11 +42,22 @@
 <script setup>
 import { ref } from 'vue';
 
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+const navigateToLogin = () => {
+  router.push('/login'); // Redirige a la ruta del componente Login.vue
+};
+const goToCheckout = () =>{
+   router.push('/checkout'); // Redirige a la nueva página
+
+};
 
 const drawer = ref(false);
 const items = [
-  { title: 'Home', icon: 'mdi-home', route: '/' },
+  { title: 'Home', icon: 'mdi-home', route: '/home' },
   { title: 'Columnes', icon: 'mdi-pillar', route: '/columnes' },
-  { title: 'Fitxa', icon: 'mdi-card-account-mail', route: '/fitxa' },
+  { title: 'Informació', icon: 'mdi-card-account-mail', route: '/fitxa' },
 ];
 </script>
