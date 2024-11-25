@@ -62,7 +62,7 @@ const valid = ref(false);
 const email = ref('');
 const password = ref('');
 const goToRegister = () => {
-  router.push('/register');
+  window.location.href = 'http://localhost:3000/register'; // Redirige directamente a la URL del backend
 };
 const emailRules = [
   (v) => !!v || 'El correo electrónico es obligatorio',

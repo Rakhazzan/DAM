@@ -7,7 +7,7 @@
         <v-form ref="form" v-model="valid" lazy-validation>
           <v-text-field
             v-model="name"
-            label="Nombre completo"
+            label="Username"
             :rules="nameRules"
             required
             variant="outlined"
@@ -15,7 +15,7 @@
 
           <v-text-field
             v-model="email"
-            label="Correo electrónico"
+            label="Email"
             :rules="emailRules"
             required
             variant="outlined"
@@ -23,7 +23,7 @@
 
           <v-text-field
             v-model="password"
-            label="Contraseña"
+            label="P  assword"
             type="password"
             :rules="passwordRules"
             required
