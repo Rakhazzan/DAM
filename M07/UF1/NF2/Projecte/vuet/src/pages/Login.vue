@@ -38,7 +38,10 @@
           <v-btn text class="forgot-password">¿Olvidaste tu contraseña?</v-btn>
         </v-form>
       </v-card-text>
+
+      <!-- Actions -->
       <v-card-actions>
+
   <v-btn block color="primary" @click="goToRegister">Registrarse</v-btn>
 </v-card-actions>
 
