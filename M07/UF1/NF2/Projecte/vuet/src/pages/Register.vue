@@ -23,7 +23,7 @@
 
           <v-text-field
             v-model="password"
-            label="P  assword"
+            label="Password"
             type="password"
             :rules="passwordRules"
             required
