@@ -43,7 +43,6 @@
 
 <script setup>
 import { ref } from 'vue';
-import axios from 'axios';
 
 const valid = ref(false);
 const name = ref('');
@@ -61,29 +60,33 @@ const passwordRules = [
   (v) => !!v || 'La contraseña es obligatoria',
   (v) => (v && v.length >= 6) || 'La contraseña debe tener al menos 6 caracteres',
 ];
+
 const register = async () => {
   try {
-    // Solicitud POST para registrar al usuario
-    const response = await axios.post('http://localhost:3000/register', {
-      name: name.value,
-      email: email.value,
-      password: password.value,
+    const response = await fetch('http://localhost:3000/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: name.value,
+        email: email.value,
+        password: password.value,
+      }),
     });
 
-    // Mostrar mensaje de éxito
-    alert(response.data.message);
-    console.log('Registro exitoso:', response.data);
-    // Puedes redirigir al usuario o limpiar el formulario, por ejemplo:
+    if (!response.ok) throw new Error('Error al registrar el usuario');
+
+    const data = await response.json();
+    alert('Usuario registrado exitosamente: ' + data.username);
+
+    // Limpia los campos
     name.value = '';
     email.value = '';
     password.value = '';
   } catch (error) {
-    // Mostrar mensaje de error
-    console.error('Error en el registro:', error.response ? error.response.data : error.message);
-    alert(error.response ? error.response.data.message : 'Error desconocido');
+    console.error('Error al registrar:', error);
+    alert('Hubo un problema al registrar el usuario.');
   }
 };
-
 </script>
 
 <style scoped>

@@ -1,57 +1,57 @@
 const express = require('express');
+const { MongoClient } = require('mongodb');
+const bcrypt = require('bcryptjs');
 const cors = require('cors');
-const mysql = require('mysql2');
 
 const app = express();
-const PORT = 3000;
+const port = 3000;
 
-// Configuración de CORS
+// Middleware
 app.use(cors());
-
-// Middleware para manejar JSON
 app.use(express.json());
 
-// Conexión a la base de datos MariaDB
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root', // Usuario de tu base de datos MariaDB
-  password: '', // Contraseña de tu base de datos MariaDB
-  database: 'heaven_taste'
-});
+// Conexión a MongoDB
+const uri = 'mongodb://localhost:27017';
+const client = new MongoClient(uri);
+const dbName = 'HeavenTaste';
 
-// Conexión exitosa a MariaDB
-db.connect((err) => {
-  if (err) {
-    console.error('Error de conexión a MariaDB:', err);
-    return;
+app.post('/register', async (req, res) => {
+  const { username, email, password } = req.body;
+
+  if (!username || !email || !password) {
+    return res.status(400).json({ message: 'Todos los campos son obligatorios' });
   }
-  console.log('Conexión a MariaDB exitosa');
-});
 
-// Ruta para obtener todos los usuarios
-app.get('/users', (req, res) => {
-  db.query('SELECT * FROM users', (err, results) => {
-    if (err) {
-      res.status(500).json({ message: 'Error al obtener usuarios' });
-    } else {
-      res.status(200).json(results);
+  try {
+    await client.connect();
+    const db = client.db(dbName);
+    const collection = db.collection('users');
+
+    // Verifica si el usuario ya existe
+    const existingUser = await collection.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: 'El correo ya está registrado' });
     }
-  });
+
+    // Hashea la contraseña
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Inserta el usuario en la base de datos
+    const result = await collection.insertOne({
+      username,
+      email,
+      password: hashedPassword,
+    });
+
+    res.status(201).json({ username, id: result.insertedId });
+  } catch (error) {
+    console.error('Error al registrar el usuario:', error);
+    res.status(500).json({ message: 'Error interno del servidor' });
+  } finally {
+    await client.close();
+  }
 });
 
-// Ruta para crear un nuevo usuario
-app.post('/users', (req, res) => {
-  const { name, email, password } = req.body;
-  db.query('INSERT INTO users (name, email, password) VALUES (?, ?, ?)', [name, email, password], (err, results) => {
-    if (err) {
-      res.status(500).json({ message: 'Error al agregar usuario' });
-    } else {
-      res.status(201).json({ message: 'Usuario creado exitosamente' });
-    }
-  });
-});
-
-// Iniciar el servidor
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+app.listen(port, () => {
+  console.log(`Servidor escuchando en http://localhost:${port}`);
 });
