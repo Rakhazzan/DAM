@@ -63,7 +63,7 @@ const passwordRules = [
 
 const register = async () => {
   try {
-    const response = await fetch('http://localhost:3000/register', {
+    const response = await fetch('http://localhost:3001/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -73,20 +73,22 @@ const register = async () => {
       }),
     });
 
-    if (!response.ok) throw new Error('Error al registrar el usuario');
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'Error al registrar el usuario');
+    }
 
     const data = await response.json();
     alert('Usuario registrado exitosamente: ' + data.username);
-
-    // Limpia los campos
     name.value = '';
     email.value = '';
     password.value = '';
   } catch (error) {
     console.error('Error al registrar:', error);
-    alert('Hubo un problema al registrar el usuario.');
+    alert(error.message || 'Hubo un problema al registrar el usuario.');
   }
 };
+
 </script>
 
 <style scoped>
