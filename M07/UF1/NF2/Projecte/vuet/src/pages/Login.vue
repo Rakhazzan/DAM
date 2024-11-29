@@ -4,7 +4,7 @@
       <!-- Logo -->
       <v-card-title class="justify-center align-center">
         <v-img
-          src="C:/Users/Mohamed/Documents/DAM/M07/UF1/NF2/Projecte/vuet/public\img\HeavenTaste_Logo.jpg"
+          src="C:/Users/Mohamed/Documents/DAM/M07/UF1/NF2/Projecte/vuet/public/img/HeavenTaste_Logo.jpg"
           alt="HeavenTaste Logo"
           max-width="150"
         />
@@ -41,9 +41,8 @@
 
       <!-- Actions -->
       <v-card-actions>
-
-  <v-btn block color="primary" @click="goToRegister">Registrarse</v-btn>
-</v-card-actions>
+        <v-btn block color="primary" @click="goToRegister">Registrarse</v-btn>
+      </v-card-actions>
 
       <!-- Actions -->
       <v-card-actions>
@@ -62,8 +61,9 @@ const valid = ref(false);
 const email = ref('');
 const password = ref('');
 const goToRegister = () => {
-  window.location.href = 'http://localhost:3000/register'; // Redirige directamente a la URL del backend
+  window.location.href = 'http://localhost:3000/register'; // Redirige a la página de registro
 };
+
 const emailRules = [
   (v) => !!v || 'El correo electrónico es obligatorio',
   (v) => /.+@.+\..+/.test(v) || 'Ingrese un correo válido',
@@ -74,13 +74,34 @@ const passwordRules = [
   (v) => (v && v.length >= 6) || 'La contraseña debe tener al menos 6 caracteres',
 ];
 
-const login = () => {
-  console.log('Iniciando sesión con:', email.value, password.value);
+// Función para manejar el inicio de sesión
+const login = async () => {
+  try {
+    const response = await fetch("http://localhost:3000/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: email.value,
+        password: password.value,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || "Error desconocido en el servidor");
+    }
+
+    const data = await response.json();
+    alert(`Inicio de sesión exitoso: Bienvenido, ${data.username}`);
+    // Redirigir a otra página o guardar el estado del usuario
+  } catch (error) {
+    console.error("Error al iniciar sesión:", error);
+    alert(error.message || "Error desconocido en el servidor.");
+  }
 };
 </script>
 
 <style scoped>
-
 .title {
   font-weight: bold;
   color: #FF0D00; /* Rojo del branding */
