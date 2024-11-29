@@ -42,30 +42,30 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from "vue";
 
 const valid = ref(false);
-const name = ref('');
-const email = ref('');
-const password = ref('');
+const name = ref("");
+const email = ref("");
+const password = ref("");
 
-const nameRules = [(v) => !!v || 'El nombre es obligatorio'];
-
+// Reglas de validación
+const nameRules = [(v) => !!v || "El nombre es obligatorio"];
 const emailRules = [
-  (v) => !!v || 'El correo electrónico es obligatorio',
-  (v) => /.+@.+\..+/.test(v) || 'Ingrese un correo válido',
+  (v) => !!v || "El correo electrónico es obligatorio",
+  (v) => /.+@.+\..+/.test(v) || "Ingrese un correo válido",
 ];
-
 const passwordRules = [
-  (v) => !!v || 'La contraseña es obligatoria',
-  (v) => (v && v.length >= 6) || 'La contraseña debe tener al menos 6 caracteres',
+  (v) => !!v || "La contraseña es obligatoria",
+  (v) => v.length >= 6 || "La contraseña debe tener al menos 6 caracteres",
 ];
 
+// Función para registrar al usuario
 const register = async () => {
   try {
-    const response = await fetch('http://localhost:3001/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    const response = await fetch("http://localhost:3001/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         username: name.value,
         email: email.value,
@@ -73,22 +73,24 @@ const register = async () => {
       }),
     });
 
+    // Verifica que la respuesta sea exitosa
     if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.message || 'Error al registrar el usuario');
+      const errorData = await response.json().catch(() => null); // Captura errores JSON inválidos
+      throw new Error(errorData?.message || "Error desconocido en el servidor");
     }
 
     const data = await response.json();
-    alert('Usuario registrado exitosamente: ' + data.username);
-    name.value = '';
-    email.value = '';
-    password.value = '';
+    alert(`Usuario registrado exitosamente: ${data.username}`);
+
+    // Limpia los campos
+    name.value = "";
+    email.value = "";
+    password.value = "";
   } catch (error) {
-    console.error('Error al registrar:', error);
-    alert(error.message || 'Hubo un problema al registrar el usuario.');
+    console.error("Error al registrar:", error);
+    alert(error.message || "Hubo un problema al registrar el usuario.");
   }
 };
-
 </script>
 
 <style scoped>

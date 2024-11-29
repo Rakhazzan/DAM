@@ -1,47 +1,48 @@
-// backend/app.js
-const express = require('express');
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
-const cors = require('cors');
+const express = require("express");
+const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
+const cors = require("cors");
 
 // Configuración del servidor
 const app = express();
 const port = 3001;
 
 // Middlewares
-app.use(cors());
-app.use(express.json());
+app.use(cors({ origin: "*" })); // Permitir todas las solicitudes de origen cruzado
+app.use(express.json()); // Para procesar JSON en el cuerpo de las solicitudes
 
-// Conexión a MongoDB con Mongoose
-const uri = 'mongodb://localhost:27017/HeavenTaste';
+// Conexión a MongoDB
+const uri = "mongodb://127.0.0.1:27017/HeavenTaste"; // Uso de 127.0.0.1 en lugar de localhost
 mongoose
-  .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('Conectado a MongoDB'))
-  .catch((err) => console.error('Error al conectar a MongoDB:', err));
+  .connect(uri)
+  .then(() => console.log("Conexión a MongoDB exitosa"))
+  .catch((err) => console.error("Error al conectar a MongoDB:", err));
 
-// Definición del esquema y modelo
+// Definición del esquema y modelo de usuario
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
 });
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
 
 // Rutas
-app.post('/register', async (req, res) => {
+app.post("/register", async (req, res) => {
   const { username, email, password } = req.body;
 
   // Validación de entrada
   if (!username || !email || !password) {
-    return res.status(400).json({ message: 'Todos los campos son obligatorios' });
+    return res
+      .status(400)
+      .json({ message: "Todos los campos son obligatorios" });
   }
 
   try {
     // Verifica si el usuario ya existe
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res.status(400).json({ message: 'El correo ya está registrado' });
+      return res.status(400).json({ message: "El correo ya está registrado" });
     }
 
     // Hashea la contraseña
@@ -53,9 +54,19 @@ app.post('/register', async (req, res) => {
 
     res.status(201).json({ username, id: newUser._id });
   } catch (error) {
-    console.error('Error al registrar el usuario:', error);
-    res.status(500).json({ message: 'Error interno del servidor' });
+    console.error("Error en el servidor:", error.message);
+    res.status(500).json({ message: "Error interno del servidor" });
   }
+});
+
+// Ruta de prueba
+app.get("/", (req, res) => {
+  res.send("Servidor funcionando correctamente");
+});
+
+// Middleware para manejar rutas no encontradas
+app.use((req, res) => {
+  res.status(404).json({ message: "Ruta no encontrada" });
 });
 
 // Inicia el servidor
