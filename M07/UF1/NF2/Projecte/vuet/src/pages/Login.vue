@@ -2,9 +2,9 @@
   <v-container class="d-flex justify-center align-center fill-height login-container">
     <v-card class="pa-8" width="400">
       <!-- Logo -->
-      <v-card-title class="justify-center align-center">
-        <v-img
-          src="C:/Users/Mohamed/Documents/DAM/M07/UF1/NF2/Projecte/vuet/public/img/HeavenTaste_Logo.jpg"
+      <v-card-title class="d-flex justify-center align-center">
+        <v-img 
+          src="C:/Users/Adrià/Desktop/DAM-1/M07/UF1/NF2/Projecte/vuet/public/img/HeavenTaste_Logo.jpg"
           alt="HeavenTaste Logo"
           max-width="150"
         />
@@ -35,7 +35,9 @@
           ></v-text-field>
 
           <!-- Forgot password -->
+          <div class="d-flex justify-center align-center" style="height: 100px;">
           <v-btn text class="forgot-password">¿Olvidaste tu contraseña?</v-btn>
+        </div>
         </v-form>
       </v-card-text>
 
@@ -103,12 +105,30 @@ const login = async () => {
 
 <style scoped>
 .title {
-  font-weight: bold;
+  font-weight: bold; /* Asegura un texto destacado */
   color: #FF0D00; /* Rojo del branding */
+  font-family: 'Arial', sans-serif; /* Fuente limpia y accesible */
+  text-align: center; /* Centra el título para mejor presentación */
+  margin: 15px 0; /* Espaciado vertical */
+  font-size: 1.8em; /* Ajusta el tamaño para resaltar */
 }
 
 .forgot-password {
-  text-transform: none;
+  text-transform: none; /* Mantiene el texto en su formato original */
   color: #FF9400; /* Naranja del branding */
+  font-size: 0.9em; /* Tamaño más pequeño para jerarquía visual */
+  text-decoration: underline; /* Sugiere que es un enlace */
+  cursor: pointer; /* Indica que es interactivo */
+  margin-top: 10px; /* Espaciado superior */
+  display: inline-block; /* Permite margen controlado */
+}
+
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Asegura que ocupe el alto disponible */
+  width: 100%; /* Opción adicional para alinear correctamente */
 }
 </style>
+
