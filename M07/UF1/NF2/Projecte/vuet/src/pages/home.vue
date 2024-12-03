@@ -20,6 +20,9 @@
             <v-card-subtitle class="product-description">
               {{ product.description }}
             </v-card-subtitle>
+            <v-card-subtitle class="product-price">
+              Precio: {{ product.price.toFixed(2) }} €
+            </v-card-subtitle>
             <v-card-actions>
               <v-btn color="primary" class="add-to-cart" @click="addToCart(product)">
                 Añadir a la cesta
@@ -48,6 +51,9 @@
             <v-card-subtitle class="product-description">
               {{ discount.description }}
             </v-card-subtitle>
+            <v-card-subtitle class="product-price">
+              Precio: {{ discount.price.toFixed(2) }} €
+            </v-card-subtitle>
             <v-card-actions>
               <v-btn color="secondary" class="add-to-cart" @click="addToCart(discount)">
                 Añadir a la cesta
@@ -65,11 +71,11 @@ export default {
   data() {
     return {
       products: [
-        { name: "Hamburguesa Clásica", description: "Deliciosa hamburguesa con queso.", image: "img/Burger.jpg" },
-        { name: "Papas Fritas", description: "Crujientes y doradas.", image: "img/fries.jpg" },
+        { name: "Hamburguesa Clásica", description: "Deliciosa hamburguesa con queso.", image: "img/Burger.jpg", price: 5.99 },
+        { name: "Papas Fritas", description: "Crujientes y doradas.", image: "img/fries.jpg", price: 2.99 },
       ],
       discounts: [
-        { name: "Combo Familiar", description: "Hamburguesas y papas para 4 personas.", image: "img/Combo.jpg" },
+        { name: "Combo Familiar", description: "Hamburguesas y papas para 4 personas.", image: "img/Combo.jpg", price: 15.99 },
       ],
       cart: [],
     };
@@ -118,6 +124,13 @@ export default {
 .product-description {
   font-size: 0.9rem;
   color: #757575;
+}
+
+.product-price {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #f57c00; /* Naranja resalta el precio */
+  margin-top: 0.5rem;
 }
 
 .add-to-cart {
