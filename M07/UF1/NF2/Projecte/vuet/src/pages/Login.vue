@@ -2,9 +2,9 @@
   <v-container class="d-flex justify-center align-center fill-height login-container">
     <v-card class="pa-8" width="400">
       <!-- Logo -->
-      <v-card-title class="justify-center align-center">
-        <v-img
-          src="C:/Users/Mohamed/Documents/DAM/M07/UF1/NF2/Projecte/vuet/public/img/HeavenTaste_Logo.jpg"
+      <v-card-title class="d-flex justify-center align-center">
+        <v-img 
+          src="C:/Users/Adrià/Desktop/DAM-1/M07/UF1/NF2/Projecte/vuet/public/img/HeavenTaste_Logo.jpg"
           alt="HeavenTaste Logo"
           max-width="150"
         />
@@ -105,7 +105,10 @@ const login = async () => {
 
 <style scoped>
 .title {
+<<<<<<< HEAD
   font-weight: bold;
+=======
+>>>>>>> 193d2de237412cdbd689f81ff788ff82f0129a8a
   font-weight: bold; /* Asegura un texto destacado */
   color: #FF0D00; /* Rojo del branding */
   font-family: 'Arial', sans-serif; /* Fuente limpia y accesible */
@@ -114,7 +117,10 @@ const login = async () => {
   font-size: 1.8em; /* Ajusta el tamaño para resaltar */
 }
 .forgot-password {
+<<<<<<< HEAD
   text-transform: none;
+=======
+>>>>>>> 193d2de237412cdbd689f81ff788ff82f0129a8a
   text-transform: none; /* Mantiene el texto en su formato original */
   color: #FF9400; /* Naranja del branding */
   font-size: 0.9em; /* Tamaño más pequeño para jerarquía visual */
@@ -123,6 +129,10 @@ const login = async () => {
   margin-top: 10px; /* Espaciado superior */
   display: inline-block; /* Permite margen controlado */
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 193d2de237412cdbd689f81ff788ff82f0129a8a
 .center-content {
   display: flex;
   justify-content: center;
@@ -131,3 +141,4 @@ const login = async () => {
   width: 100%; /* Opción adicional para alinear correctamente */
 }
 </style>
+

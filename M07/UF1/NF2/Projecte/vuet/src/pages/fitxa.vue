@@ -3,7 +3,7 @@
     <v-card color="red" class="ma-1 pa-1">
       <v-row>
         <v-col cols="6">
-          <v-img src="C:\Users\Mohamed\Documents\DAM\M07\UF1\NF2\Projecte\vuet\public\img\HeavenTaste.jpg"></v-img>
+          <v-img src="C:\Users\Adrià\Desktop\DAM-1\M07\UF1\NF2\Projecte\vuet\public\img\HeavenTaste.jpg"></v-img>
         </v-col>
         <v-col cols="6">
           <h1 class="text-center">{{ company }}</h1>
