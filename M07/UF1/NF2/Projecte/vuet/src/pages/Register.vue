@@ -95,17 +95,7 @@ const register = async () => {
 
 <style scoped>
 .title {
-<<<<<<< HEAD
   font-weight: bold;
   color: #FF0D00;
-=======
->>>>>>> 193d2de237412cdbd689f81ff788ff82f0129a8a
-  font-weight: bold; /* Asegura un texto destacado */
-  color: #FF0D00; /* Rojo vibrante para el texto */
-  font-family: Arial, Helvetica, sans-serif; /* Fuentes comunes y modernas */
-  text-align: center; /* Centra el texto para mayor impacto */
-  margin: 10px 0; /* Espaciado uniforme */
-  font-size: 1.5em; /* Tamaño de fuente ajustable */
 }
 </style>
-
