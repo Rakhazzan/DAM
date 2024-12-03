@@ -105,6 +105,10 @@ const login = async () => {
 
 <style scoped>
 .title {
+<<<<<<< HEAD
+  font-weight: bold;
+=======
+>>>>>>> 193d2de237412cdbd689f81ff788ff82f0129a8a
   font-weight: bold; /* Asegura un texto destacado */
   color: #FF0D00; /* Rojo del branding */
   font-family: 'Arial', sans-serif; /* Fuente limpia y accesible */
@@ -112,8 +116,11 @@ const login = async () => {
   margin: 15px 0; /* Espaciado vertical */
   font-size: 1.8em; /* Ajusta el tamaño para resaltar */
 }
-
 .forgot-password {
+<<<<<<< HEAD
+  text-transform: none;
+=======
+>>>>>>> 193d2de237412cdbd689f81ff788ff82f0129a8a
   text-transform: none; /* Mantiene el texto en su formato original */
   color: #FF9400; /* Naranja del branding */
   font-size: 0.9em; /* Tamaño más pequeño para jerarquía visual */
@@ -122,7 +129,10 @@ const login = async () => {
   margin-top: 10px; /* Espaciado superior */
   display: inline-block; /* Permite margen controlado */
 }
+<<<<<<< HEAD
+=======
 
+>>>>>>> 193d2de237412cdbd689f81ff788ff82f0129a8a
 .center-content {
   display: flex;
   justify-content: center;
