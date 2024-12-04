@@ -67,7 +67,9 @@ const login = async () => {
   try {
     const response = await fetch("http://localhost:3001/login", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         email: email.value,
         password: password.value,
@@ -81,7 +83,8 @@ const login = async () => {
 
     const data = await response.json();
     alert(`Inicio de sesión exitoso: Bienvenido, ${data.username}`);
-    // Redirigir a otra página o guardar el estado del usuario
+    // Redirige al usuario después de un login exitoso
+    window.location.href = "/home"; // Cambia la ruta según tu app
   } catch (error) {
     console.error("Error al iniciar sesión:", error);
     alert(error.message || "Error desconocido en el servidor.");
