@@ -92,7 +92,6 @@ const login = async () => {
 <style scoped>
 .title {
   font-weight: bold;
-<<<<<<< HEAD
   font-weight: bold;
   /* Asegura un texto destacado */
   color: #FF0D00;
@@ -125,14 +124,6 @@ const login = async () => {
   /* Permite margen controlado */
 }
 
-=======
-  font-weight: bold; /* Asegura un texto destacado */
-  color: #FF0D00; /* Rojo del branding */
-  font-family: 'Arial', sans-serif; /* Fuente limpia y accesible */
-  text-align: center; /* Centra el título para mejor presentación */
-  margin: 15px 0; /* Espaciado vertical */
-  font-size: 1.8em; /* Ajusta el tamaño para resaltar */
-}
 .forgot-password {
   text-transform: none;
   text-transform: none; /* Mantiene el texto en su formato original */
@@ -143,7 +134,7 @@ const login = async () => {
   margin-top: 10px; /* Espaciado superior */
   display: inline-block; /* Permite margen controlado */
 }
->>>>>>> 6fbcd7d19f0158c10e8b04d5a49980c89e4761ef
+
 .center-content {
   display: flex;
   justify-content: center;
