@@ -44,12 +44,17 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';  // Importamos el router para navegación
+
+const router = useRouter();  // Usamos el router
 
 const valid = ref(false);
 const email = ref('');
 const password = ref('');
+
+// Redirige al usuario a la página de registro
 const goToRegister = () => {
-  window.location.href = 'http://localhost:3000/register'; // Redirige a la página de registro
+  router.push('/register');  // Redirige correctamente a /register
 };
 
 const emailRules = [
@@ -83,6 +88,8 @@ const login = async () => {
 
     const data = await response.json();
     alert(`Inicio de sesión exitoso: Bienvenido, ${data.username}`);
+    // Guardamos la información de login en localStorage para mantener el estado
+    localStorage.setItem('user', JSON.stringify(data)); // Almacenamos los datos del usuario
     // Redirige al usuario después de un login exitoso
     window.location.href = "/home"; // Cambia la ruta según tu app
   } catch (error) {
@@ -91,7 +98,6 @@ const login = async () => {
   }
 };
 </script>
-
 <style scoped>
 .title {
   font-weight: bold;

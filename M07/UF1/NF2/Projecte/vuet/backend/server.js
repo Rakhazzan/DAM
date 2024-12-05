@@ -86,7 +86,20 @@ app.post("/login", async (req, res) => {
     res.status(500).json({ message: "Error interno del servidor" });
   }
 });
+// Ruta para obtener la información del perfil de un usuario
+app.get('/profile', (req, res) => {
+  // Recuperar el email del usuario desde el LocalStorage (o token)
+  const email = req.query.email;
 
+  // Buscar el usuario en la "base de datos"
+  const user = users.find(u => u.email === email);
+
+  if (user) {
+    res.json({ username: user.username, email: user.email });
+  } else {
+    res.status(404).json({ message: "Usuario no encontrado" });
+  }
+});
 // Ruta de prueba
 app.get("/", (req, res) => {
   res.send("Servidor funcionando correctamente");
