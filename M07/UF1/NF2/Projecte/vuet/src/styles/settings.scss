@@ -5,11 +5,12 @@ $dark: #ffffff; // Rojo oscuro
 $mid: #000000; // Negro
 $light: #292929; // Gris oscuro
 $lightest: #000000; // Negro más claro (puede repetirse en varios lugares)
-$fondo: #0f0e0c;
+$fondo: #d89205;
 // Estilos generales
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: $dark;
+  //background-color: $dark;
+  background-image: url("https://thumbs.dreamstime.com/z/burger-day-style-wallpaper-background-decorations-burger-day-patterns-such-as-burgers-using-vibrant-colors-to-convey-334027444.jpg?ct=jpeg");
   color: $light;
 }
 
