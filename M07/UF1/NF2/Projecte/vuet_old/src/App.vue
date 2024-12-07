@@ -32,8 +32,18 @@
       <!-- Button for Profile (Only show if logged in) -->
       <v-btn icon @click="goToProfile" v-if="isLoggedIn">
         <v-icon>mdi-account-circle</v-icon>
+
+      <!-- Button for Login (Only show this if not logged in) -->
+      <v-btn icon @click="navigateToLogin" v-if="!isLoggedIn">
+        <v-icon>mdi-account</v-icon>
+      </v-btn>
+
+      <!-- Button for Profile (Only show if logged in) -->
+      <v-btn icon @click="goToProfile" v-if="isLoggedIn">
+        <v-icon>mdi-account-circle</v-icon>
       </v-btn>
     </v-toolbar>
+
 
     <!-- Main Content -->
     <v-main>
@@ -47,10 +57,17 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 // Importamos el router
+// Importamos el router
 const router = useRouter();
 
 // Establecemos el estado del drawer para la navegación lateral
+// Establecemos el estado del drawer para la navegación lateral
 const drawer = ref(false);
+
+// Verifica si el usuario está logueado usando localStorage
+const isLoggedIn = ref(localStorage.getItem('user') !== null);
+
+// Los elementos del menú lateral
 
 // Verifica si el usuario está logueado usando localStorage
 const isLoggedIn = ref(localStorage.getItem('user') !== null);
