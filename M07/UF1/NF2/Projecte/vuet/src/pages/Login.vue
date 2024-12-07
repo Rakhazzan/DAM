@@ -3,7 +3,7 @@
     <v-card class="pa-8" width="400">
       <!-- Logo -->
       <v-card-title class="d-flex justify-center align-center">
-        <v-img src="C:/Users/Adrià/Desktop/DAM-1/M07/UF1/NF2/Projecte/vuet/public/img/HeavenTaste_Logo.jpg"
+        <v-img src="/img/HeavenTaste_Logo.jpg"
           alt="HeavenTaste Logo" max-width="150" />
       </v-card-title>
 
@@ -44,12 +44,17 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';  // Importamos el router para navegación
+
+const router = useRouter();  // Usamos el router
 
 const valid = ref(false);
 const email = ref('');
 const password = ref('');
+
+// Redirige al usuario a la página de registro
 const goToRegister = () => {
-  window.location.href = 'http://localhost:3000/register'; // Redirige a la página de registro
+  router.push('/register');  // Redirige correctamente a /register
 };
 
 const emailRules = [
@@ -67,7 +72,9 @@ const login = async () => {
   try {
     const response = await fetch("http://localhost:3001/login", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         email: email.value,
         password: password.value,
@@ -81,14 +88,16 @@ const login = async () => {
 
     const data = await response.json();
     alert(`Inicio de sesión exitoso: Bienvenido, ${data.username}`);
-    // Redirigir a otra página o guardar el estado del usuario
+    // Guardamos la información de login en localStorage para mantener el estado
+    localStorage.setItem('user', JSON.stringify(data)); // Almacenamos los datos del usuario
+    // Redirige al usuario después de un login exitoso
+    window.location.href = "/home"; // Cambia la ruta según tu app
   } catch (error) {
     console.error("Error al iniciar sesión:", error);
     alert(error.message || "Error desconocido en el servidor.");
   }
 };
 </script>
-
 <style scoped>
 .title {
   font-weight: bold;
@@ -122,6 +131,17 @@ const login = async () => {
   /* Espaciado superior */
   display: inline-block;
   /* Permite margen controlado */
+}
+
+.forgot-password {
+  text-transform: none;
+  text-transform: none; /* Mantiene el texto en su formato original */
+  color: #FF9400; /* Naranja del branding */
+  font-size: 0.9em; /* Tamaño más pequeño para jerarquía visual */
+  text-decoration: underline; /* Sugiere que es un enlace */
+  cursor: pointer; /* Indica que es interactivo */
+  margin-top: 10px; /* Espaciado superior */
+  display: inline-block; /* Permite margen controlado */
 }
 
 .center-content {

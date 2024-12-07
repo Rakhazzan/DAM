@@ -12,6 +12,7 @@ import { routes } from 'vue-router/auto-routes'
 
 const router = createRouter({
   path: "/login", component: () => import("@/pages/Login.vue") ,
+  path: "/profile", component: () => import("@/pages/Profile.vue") ,
   path: "/checkout", component: () => import("@/pages/Checkout.vue") ,
   path: "/register", component: () => import("@/pages/Register.vue") ,
   history: createWebHistory(),
