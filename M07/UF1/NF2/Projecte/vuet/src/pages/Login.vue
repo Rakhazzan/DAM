@@ -44,18 +44,12 @@
 
 <script setup>
 import { ref } from 'vue';
-import { useRouter } from 'vue-router';  // Importamos el router para navegación
+import { useRouter } from 'vue-router';
 
-const router = useRouter();  // Usamos el router
-
+const router = useRouter();
 const valid = ref(false);
 const email = ref('');
 const password = ref('');
-
-// Redirige al usuario a la página de registro
-const goToRegister = () => {
-  router.push('/register');  // Redirige correctamente a /register
-};
 
 const emailRules = [
   (v) => !!v || 'El correo electrónico es obligatorio',
@@ -67,7 +61,6 @@ const passwordRules = [
   (v) => (v && v.length >= 6) || 'La contraseña debe tener al menos 6 caracteres',
 ];
 
-// Función para manejar el inicio de sesión
 const login = async () => {
   try {
     const response = await fetch("http://localhost:3001/login", {
@@ -87,16 +80,19 @@ const login = async () => {
     }
 
     const data = await response.json();
+
+    // Guardar el correo en localStorage
+    localStorage.setItem("userEmail", email.value); // Asegúrate de que "email.value" tenga el correo
     alert(`Inicio de sesión exitoso: Bienvenido, ${data.username}`);
-    // Guardamos la información de login en localStorage para mantener el estado
-    localStorage.setItem('user', JSON.stringify(data)); // Almacenamos los datos del usuario
+
     // Redirige al usuario después de un login exitoso
-    window.location.href = "/home"; // Cambia la ruta según tu app
+    router.push("/profile"); // Cambia la ruta según tu aplicación
   } catch (error) {
     console.error("Error al iniciar sesión:", error);
     alert(error.message || "Error desconocido en el servidor.");
   }
 };
+
 </script>
 <style scoped>
 .title {

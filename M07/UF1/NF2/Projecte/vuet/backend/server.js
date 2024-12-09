@@ -87,19 +87,27 @@ app.post("/login", async (req, res) => {
   }
 });
 // Ruta para obtener la información del perfil de un usuario
-app.get('/profile', (req, res) => {
-  // Recuperar el email del usuario desde el LocalStorage (o token)
-  const email = req.query.email;
+// Ruta para actualizar la contraseña del usuario
+app.put('/profile', (req, res) => {
+  const { email, newPassword } = req.body;
 
-  // Buscar el usuario en la "base de datos"
-  const user = users.find(u => u.email === email);
-
-  if (user) {
-    res.json({ username: user.username, email: user.email });
-  } else {
-    res.status(404).json({ message: "Usuario no encontrado" });
+  // Validar los datos enviados
+  if (!email || !newPassword) {
+    return res.status(400).json({ message: 'El correo y la nueva contraseña son obligatorios' });
   }
+
+  // Simulando una base de datos
+  const userIndex = users.findIndex((u) => u.email === email);
+
+  if (userIndex === -1) {
+    return res.status(404).json({ message: 'Usuario no encontrado' });
+  }
+
+  // Actualizamos la contraseña
+  users[userIndex].password = newPassword;
+  res.json({ message: 'Contraseña actualizada correctamente' });
 });
+
 // Ruta de prueba
 app.get("/", (req, res) => {
   res.send("Servidor funcionando correctamente");
