@@ -1,11 +1,11 @@
 <template>
   <v-app>
     <!-- Navigation Drawer -->
-    
+
 
     <!-- Toolbar -->
     <v-toolbar color="#f06b64" app>
-      
+
       <v-toolbar-title> HeavenTaste</v-toolbar-title>
       <v-spacer></v-spacer>
 
@@ -17,7 +17,7 @@
       <v-btn icon @click="goToinfo">
         <v-icon>mdi-card-account-mail</v-icon>
       </v-btn>
-  
+
 
       <!-- Button for Cart -->
       <v-btn icon @click="goToCheckout">
