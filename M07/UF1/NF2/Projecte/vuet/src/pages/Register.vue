@@ -42,7 +42,13 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';  // Importamos el router para navegación
+
+const router = useRouter();  // Usamos el router
+
+
 
 const valid = ref(false);
 const name = ref("");
@@ -81,6 +87,7 @@ const register = async () => {
 
     const data = await response.json();
     alert(`Usuario registrado exitosamente: ${data.username}`);
+    router.push('/login');
 
     // Limpia los campos
     name.value = "";

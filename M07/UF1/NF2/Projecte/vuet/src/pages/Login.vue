@@ -3,7 +3,7 @@
     <v-card class="pa-8" width="400">
       <!-- Logo -->
       <v-card-title class="d-flex justify-center align-center">
-        <v-img src="C:/Users/Mohamed/Documents/DAM/M07/UF1/NF2/Projecte/vuet/public/img/HeavenTaste_Logo.jpg"
+        <v-img src="/img/HeavenTaste_Logo.jpg"
           alt="HeavenTaste Logo" max-width="150" />
       </v-card-title>
 
