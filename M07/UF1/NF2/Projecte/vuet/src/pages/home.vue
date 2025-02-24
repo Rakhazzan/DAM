@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-container>
-      <!-- Barra de búsqueda -->
+     
       <v-row class="section">
         <v-col cols="12">
           <v-text-field
@@ -14,7 +14,7 @@
         </v-col>
       </v-row>
 
-      <!-- Sección de Productos -->
+      
       <v-row class="section">
         <v-col cols="12">
           <h1 class="text-center section-title">Nuestros Productos</h1>
@@ -45,7 +45,7 @@
         </v-col>
       </v-row>
 
-      <!-- Sección de Descuentos -->
+     
       <v-row class="section">
         <v-col cols="12">
           <h1 class="text-center section-title">Promociones</h1>
@@ -83,7 +83,7 @@
 export default {
   data() {
     return {
-      searchQuery: "", // Variable para el texto de búsqueda
+      searchQuery: "", 
       products: [
         { name: "Hamburguesa Clásica", description: "Deliciosa hamburguesa con queso.", image: "img/Burger.jpg", price: 5.99 },
         { name: "Papas Fritas", description: "Crujientes y doradas.", image: "img/fries.jpg", price: 2.99 },
@@ -102,13 +102,13 @@ export default {
   },
   computed: {
     filteredProducts() {
-      // Filtra los productos según el texto de búsqueda
+      
       return this.products.filter((product) =>
         product.name.toLowerCase().includes(this.searchQuery.toLowerCase())
       );
     },
     filteredDiscounts() {
-      // Filtra las ofertas según el texto de búsqueda
+      
       return this.discounts.filter((discount) =>
         discount.name.toLowerCase().includes(this.searchQuery.toLowerCase())
       );

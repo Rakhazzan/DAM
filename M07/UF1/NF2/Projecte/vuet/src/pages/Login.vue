@@ -44,12 +44,18 @@
 
 <script setup>
 import { ref } from 'vue';
-import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router';  
 
-const router = useRouter();
+const router = useRouter();  
+
 const valid = ref(false);
 const email = ref('');
 const password = ref('');
+
+
+const goToRegister = () => {
+  router.push('/register');  
+};
 
 const emailRules = [
   (v) => !!v || 'El correo electrónico es obligatorio',
@@ -60,6 +66,7 @@ const passwordRules = [
   (v) => !!v || 'La contraseña es obligatoria',
   (v) => (v && v.length >= 6) || 'La contraseña debe tener al menos 6 caracteres',
 ];
+
 
 const login = async () => {
   try {
@@ -80,64 +87,61 @@ const login = async () => {
     }
 
     const data = await response.json();
-
-    // Guardar el correo en localStorage
-    localStorage.setItem("userEmail", email.value); // Asegúrate de que "email.value" tenga el correo
     alert(`Inicio de sesión exitoso: Bienvenido, ${data.username}`);
-
-    // Redirige al usuario después de un login exitoso
-    router.push("/profile"); // Cambia la ruta según tu aplicación
+   
+    localStorage.setItem('user', JSON.stringify(data)); 
+   
+    window.location.href = "/home"; 
   } catch (error) {
     console.error("Error al iniciar sesión:", error);
     alert(error.message || "Error desconocido en el servidor.");
   }
 };
-
 </script>
 <style scoped>
 .title {
   font-weight: bold;
   font-weight: bold;
-  /* Asegura un texto destacado */
+
   color: #FF0D00;
-  /* Rojo del branding */
+
   font-family: 'Arial', sans-serif;
-  /* Fuente limpia y accesible */
+
   text-align: center;
-  /* Centra el título para mejor presentación */
+  
   margin: 15px 0;
-  /* Espaciado vertical */
+ 
   font-size: 1.8em;
-  /* Ajusta el tamaño para resaltar */
+ 
 }
 
 .forgot-password {
   text-transform: none;
   text-transform: none;
-  /* Mantiene el texto en su formato original */
+ 
   color: #FF9400;
-  /* Naranja del branding */
+ 
   font-size: 0.9em;
-  /* Tamaño más pequeño para jerarquía visual */
+  
   text-decoration: underline;
-  /* Sugiere que es un enlace */
+ 
   cursor: pointer;
-  /* Indica que es interactivo */
+  
   margin-top: 10px;
-  /* Espaciado superior */
+ 
   display: inline-block;
-  /* Permite margen controlado */
+ 
 }
 
 .forgot-password {
   text-transform: none;
-  text-transform: none; /* Mantiene el texto en su formato original */
-  color: #FF9400; /* Naranja del branding */
-  font-size: 0.9em; /* Tamaño más pequeño para jerarquía visual */
-  text-decoration: underline; /* Sugiere que es un enlace */
-  cursor: pointer; /* Indica que es interactivo */
-  margin-top: 10px; /* Espaciado superior */
-  display: inline-block; /* Permite margen controlado */
+  text-transform: none; 
+  color: #FF9400; 
+  font-size: 0.9em; 
+  text-decoration: underline; 
+  cursor: pointer; 
+  margin-top: 10px; 
+  display: inline-block; 
 }
 
 .center-content {
@@ -145,8 +149,8 @@ const login = async () => {
   justify-content: center;
   align-items: center;
   height: 100%;
-  /* Asegura que ocupe el alto disponible */
+  
   width: 100%;
-  /* Opción adicional para alinear correctamente */
+  
 }
 </style>

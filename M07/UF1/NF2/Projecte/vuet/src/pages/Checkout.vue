@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-container>
-      <!-- Sección de Cesta -->
+      
       <v-row>
         <v-col cols="12">
           <h1 class="text-center">Detalles de la Compra</h1>
@@ -34,7 +34,7 @@
 export default {
   data() {
     return {
-      cart: [], // Se llenará con datos desde el almacenamiento global o un servicio
+      cart: [], 
     };
   },
   computed: {
@@ -43,7 +43,7 @@ export default {
     }
   },
   created() {
-    // Carga la cesta desde almacenamiento global o props
+    
     const storedCart = JSON.parse(localStorage.getItem('cart'));
     if (storedCart) {
       this.cart = storedCart;
@@ -52,12 +52,12 @@ export default {
   methods: {
     removeFromCart(index) {
       this.cart.splice(index, 1);
-      localStorage.setItem('cart', JSON.stringify(this.cart)); // Actualiza el almacenamiento
+      localStorage.setItem('cart', JSON.stringify(this.cart)); 
     },
     pay() {
       alert('¡Compra realizada con éxito!');
       this.cart = [];
-      localStorage.removeItem('cart'); // Limpia el carrito
+      localStorage.removeItem('cart'); 
     },
   },
 };

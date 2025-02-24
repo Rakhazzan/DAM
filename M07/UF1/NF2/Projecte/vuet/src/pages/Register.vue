@@ -44,9 +44,9 @@
 <script setup>
 
 import { ref } from 'vue';
-import { useRouter } from 'vue-router';  // Importamos el router para navegación
+import { useRouter } from 'vue-router';  
 
-const router = useRouter();  // Usamos el router
+const router = useRouter();  
 
 
 
@@ -55,7 +55,7 @@ const name = ref("");
 const email = ref("");
 const password = ref("");
 
-// Reglas de validación
+
 const nameRules = [(v) => !!v || "El nombre es obligatorio"];
 const emailRules = [
   (v) => !!v || "El correo electrónico es obligatorio",
@@ -66,7 +66,7 @@ const passwordRules = [
   (v) => v.length >= 6 || "La contraseña debe tener al menos 6 caracteres",
 ];
 
-// Función para registrar al usuario
+
 const register = async () => {
   try {
     const response = await fetch("http://localhost:3001/register", {
@@ -79,9 +79,9 @@ const register = async () => {
       }),
     });
 
-    // Verifica que la respuesta sea exitosa
+   
     if (!response.ok) {
-      const errorData = await response.json().catch(() => null); // Captura errores JSON inválidos
+      const errorData = await response.json().catch(() => null); 
       throw new Error(errorData?.message || "Error desconocido en el servidor");
     }
 
@@ -89,7 +89,7 @@ const register = async () => {
     alert(`Usuario registrado exitosamente: ${data.username}`);
     router.push('/login');
 
-    // Limpia los campos
+  
     name.value = "";
     email.value = "";
     password.value = "";
@@ -105,12 +105,12 @@ const register = async () => {
 
   font-weight: bold;
   color: #FF0D00;
-  font-weight: bold; /* Asegura un texto destacado */
-  color: #FF0D00; /* Rojo vibrante para el texto */
-  font-family: Arial, Helvetica, sans-serif; /* Fuentes comunes y modernas */
-  text-align: center; /* Centra el texto para mayor impacto */
-  margin: 10px 0; /* Espaciado uniforme */
-  font-size: 1.5em; /* Tamaño de fuente ajustable */
+  font-weight: bold; 
+  color: #FF0D00; 
+  font-family: Arial, Helvetica, sans-serif; 
+  text-align: center; 
+  margin: 10px 0; 
+  font-size: 1.5em; 
 
 }
 </style>

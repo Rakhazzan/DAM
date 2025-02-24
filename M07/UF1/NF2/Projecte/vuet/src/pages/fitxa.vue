@@ -2,7 +2,7 @@
   <v-container>
     <v-card class="pa-4 mt-4 mx-auto info-card">
       <v-row>
-        <!-- Imagen -->
+       
         <v-col cols="12" md="6" class="d-flex justify-center align-center">
           <v-img
             src="/img/HeavenTaste.jpg"
@@ -12,7 +12,7 @@
           ></v-img>
         </v-col>
 
-        <!-- Información -->
+       
         <v-col cols="12" md="6">
           <h1 class="text-center company-title">{{ company }}</h1>
           <h2 class="text-center company-subtitle">{{ nom }}</h2>
@@ -31,7 +31,7 @@
         </v-col>
       </v-row>
 
-      <!-- Mapa -->
+     
       <v-row>
         <v-col cols="12">
           <div class="map-container">
@@ -61,10 +61,10 @@ const tel1 = ref("97783707");
 
 <style scoped>
 .info-card {
-  background-color: #f44336; /* Color rojo moderno */
+  background-color: #f44336; 
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra suave */
-  max-width: 800px; /* Centrado para mejor presentación */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
+  max-width: 800px; 
 }
 
 .company-title {
@@ -76,7 +76,7 @@ const tel1 = ref("97783707");
 
 .company-subtitle {
   font-size: 1.5rem;
-  color: #ffe0b2; /* Color crema claro */
+  color: #ffe0b2; 
   margin-bottom: 1rem;
 }
 
