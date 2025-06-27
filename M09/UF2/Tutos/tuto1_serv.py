@@ -1,36 +1,20 @@
 import socket
-# PROGRAMA SERVIDOR UDP
-# Configuración del servidor UDP
-ip_servidor = '127.0.0.1'
-puerto_servidor = 12345
-# Crear un socket UDP
-sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-sock.bind((ip_servidor, puerto_servidor)) # Vincular el socket a una direcció i port
-print(f"Servidor UDP esperant a {ip_servidor}:{puerto_servidor}")
+# Configuració del servidor
+host = '127.0.0.1'
+port = 12345
 
 
-try:
+# Crear socket del servidor TCP
+server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server_socket.bind((host, port))
+server_socket.listen()
+print(f"Servidor lissen a {host}:{port}")
+client_socket, client_address = server_socket.accept()  #quan accepta una connexio assigna un socket al client
+
+
+if __name__ == "__main__":
     while True:
-        # Rebre missatge del client
-        dades, direccio_client = sock.recvfrom(1024)  
-        missatge_rebut = dades.decode()
-        print(f"Missatge rebut del client {direccio_client}: {missatge_rebut}")
-
-
-        if missatge_rebut.lower() == "exit":
-            print("El client ha finalitzat la connexió.")
-            break
-
-
-        # Enviar resposta al client
-        resposta = input("Introdueix la resposta per al client: ")
-        sock.sendto(resposta.encode(), direccio_client)
-
-
-        if resposta.lower() == "exit":
-            print("Finalitzant el servidor...")
-            break
-
-
-finally:
-    sock.close()  # Tancar el socket
+        message = client_socket.recv(1024)
+        print (f"Client: {message}")
+        message = input("Servidor:")
+        client_socket.send(message.encode("utf-8"))

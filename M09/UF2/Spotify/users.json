@@ -1,0 +1,11 @@
+{
+    "moha": {
+      "password": "1234",
+      "favorites": ["song1.mp3"]
+    },
+    "anna": {
+      "password": "abcd",
+      "favorites": []
+    }
+  }
+  
